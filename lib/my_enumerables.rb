@@ -36,6 +36,38 @@ module Enumerable
         true
       end
   end
+  # my_any?
+  def my_any?
+    if block_given?
+      self.my_each do |element|
+        if yield(element) == true
+          return true
+        end
+      end
+      false
+    end
+    false
+  end
+  # my_none?
+  # returns true if no element of self meet a given criterion
+  # with no block given and no argument, returns true if self has no truthy elements, false otherwise
+  def my_none?
+    if block_given?
+      self.my_each do |element|
+        if yield(element) == true
+          return false
+        end
+      end
+      true
+    else
+      self.my_each do |element|
+        if element == true
+          return false
+        end
+      end
+      false
+    end
+  end
 
 
 end
