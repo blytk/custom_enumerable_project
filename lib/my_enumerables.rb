@@ -68,9 +68,55 @@ module Enumerable
       false
     end
   end
-
+  # my_count
+  # returns a count of specified elements
+  # with no argument and no block, returns the count of all elements
+  def my_count
+    count = 0
+    if block_given?
+      self.my_each do |element|
+        if yield(element) == true
+          count += 1
+        end
+      end
+      count
+    else
+      self.my_each do |element|
+        count += 1
+      end
+      count
+    end
+  end
+  # my_map
+  # calls the block, if given, with each element of self
+  # returns a new Array whose elements are the return values from the block
+  def my_map
+    output_array = []
+    if block_given?
+      self.my_each do |element|
+        output_array << yield(element)
+      end
+      output_array
+    else
+      self
+    end
+  end
+  # my_inject
+  # returns an object formed from operands
+  def my_inject(initial_operand = 0)
+    sum = initial_operand
+    if block_given?
+      self.my_each do |element|
+        sum = yield(sum, element)
+      end
+      sum
+    else
+      
+    end
+  end
 
 end
+
 
 # You will first have to define my_each
 # on the Array class. Methods defined in
