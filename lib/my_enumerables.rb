@@ -1,5 +1,6 @@
 module Enumerable
   # Your code goes here
+  # my_each_with_index
   def my_each_with_index
     if block_given?
       i = 0
@@ -10,6 +11,20 @@ module Enumerable
       self
     end
   end
+  # my_select
+  def my_select
+    my_select_output_array = []
+    if block_given?
+      self.my_each do |element|
+        if yield(element) == true
+          my_select_output_array << element
+        end
+      end
+    end
+    my_select_output_array
+  end
+
+
 end
 
 # You will first have to define my_each
