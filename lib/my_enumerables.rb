@@ -110,8 +110,6 @@ module Enumerable
         sum = yield(sum, element)
       end
       sum
-    else
-      
     end
   end
 
