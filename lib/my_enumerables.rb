@@ -23,6 +23,19 @@ module Enumerable
     end
     my_select_output_array
   end
+  # my_all?
+  def my_all?
+      if block_given?
+        self.my_each do |element|
+          if yield(element) == false
+            return false
+          end
+        end
+        true
+      else
+        true
+      end
+  end
 
 
 end
